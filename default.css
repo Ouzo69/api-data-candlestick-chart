@@ -1,0 +1,176 @@
+main {
+	background: white;
+}
+
+/* ============ SECTION 1: Drop down menus ============ */
+body {
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+
+	.navbar {
+	  overflow: hidden;
+	  background-color: #333;
+	}
+
+	.navbar a {
+	  float: left;
+	  font-size: 16px;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+
+	.dropdown {
+	  float: left;
+	  overflow: hidden;
+	}
+
+	.dropdown .dropbtn {
+	  font-size: 16px;
+	  border: none;
+	  outline: none;
+	  color: white;
+	  padding: 14px 16px;
+	  background-color: inherit;
+		min-width: 140px;
+	  font-family: inherit;
+	  margin: 0;
+	}
+
+	.navbar a:hover, .dropdown:hover .dropbtn {
+	  background-color: red;
+	}
+
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: #f9f9f9;
+	  min-width: 140px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+
+	.dropdown-content a {
+	  float: none;
+	  color: black;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	  text-align: center;
+	}
+
+	.dropdown-content a:hover {
+	  background-color: #ddd;
+	}
+
+	.dropdown:hover .dropdown-content {
+	  display: block;
+	}
+
+
+/* ============ SECTION 2: Group of buttons ============ */
+.btn-group .button {
+	background-color: #4CAF50; /* Green */
+	border: 1px solid green;
+	color: white;
+	padding: 8px 10px;
+	text-align: center;
+	min-width: 80px;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+	float: left;
+}
+
+.btn-group .button:not(:last-child) {
+	border-right: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+	background-color: #3e8e41;
+}
+
+/* ============ SECTION 3: Sliders for SMAs ============ */
+.toggle label {
+	position: relative;
+	display: inline-block;
+	width: 10em;
+	height: 3.5em;
+}
+
+.toggle input {
+	display: none;
+}
+
+.toggle .slider {
+	/* Base area */
+
+	position: absolute;
+	cursor: pointer;
+	top: 1.5em;
+	left: 3em;
+	width: 4em;
+	height: 2em;
+	background-color: #c32e04;
+	/* red */
+
+	transition: all .3s ease-in-out;
+	border-radius: 1em;
+}
+
+.toggle .slider:before {
+	/* movable button */
+
+	position: absolute;
+	content: "";
+	height: 1.6em;
+	width: 1.6em;
+	left: 0.2em;
+	bottom: 0.2em;
+	background-color: white;
+	border-radius: 50%;
+	transition: all .3s ease-in-out;
+}
+
+.toggle input:checked + .slider {
+	background-color: #5a9900;
+	/* green */
+}
+
+.toggle input:focus + .slider {
+	background-color: pink;
+	box-shadow: 0 0 1px #5a9900;
+}
+
+.toggle input:checked + .slider:before {
+	-webkit-transform: translateX(1.9em);
+	/* Android 4 */
+
+	-ms-transform: translateX(1.9em);
+	/* IE9 */
+
+	transform: translateX(1.9em);
+}
+
+.text .slider:after {
+	/* Text before flip-flop switch */
+
+	position: absolute;
+	content: "OFF";
+	color: #c32e04;
+	font-weight: bold;
+	height: 1.6em;
+	left: -2.5em;
+	bottom: 0.2em;
+}
+
+.text input:checked + .slider:after {
+	/* Text after flip-flog switch */
+
+	position: absolute;
+	content: "ON";
+	color: #5a9900;
+	left: 4.5em;
+}

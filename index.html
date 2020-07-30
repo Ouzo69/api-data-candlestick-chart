@@ -1,0 +1,95 @@
+<!doctype html>
+
+<head>
+
+  <script src="./index.js"></script>
+	<!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="default.css" rel="stylesheet" type="text/css">
+
+	<style>
+		h2 { font-size: 40px; }
+	</style>
+
+	<h2>
+		<script>
+			document.write("Binance-Market: <span id=\"binanceMarket\">" + getDefaultMarketSymbol() + "</span> - ");
+			document.write("<span style=\"color:grey;\">");
+			document.write("Time frame: <span id=\"timeFrame\">" + timeCodeToText(getDefaultTimeInterval()) + "</span>");
+			document.write("</span>");
+			document.write(" - Maximum number of datasets: " + getDefaultNumberOfDatasets());
+		</script>
+	</h2>
+
+</head>
+
+<body>
+
+	<div class="navbar">
+					<script>
+						createDropDownMenus(getBaseCurrencies());
+					</script>
+	</div>
+
+	<!-- Plotly diagram of a Binance market pair -->
+  <script>
+  var intFrameHeight = window.innerHeight;
+  intDiagramHeight = Math.round(Math.max(intFrameHeight*0.7, intFrameHeight-280))
+	document.write("<div id='myDiv' style=\"height : " + intDiagramHeight + "px\"></div>")
+  </script>
+
+	<table display:inline-block>
+  	<tr>
+  		<th>
+  			Time frames:&nbsp;
+  		</th>
+  		<th>
+        <div class="btn-group">
+        	<script>
+            createButtonGroup(); //for different time frames
+          </script>
+      	</div>
+			</th>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <!-- Sliders for different SMAs -->
+    	<main>
+    		<th>
+    			Toggle SMAs :
+    		</th>
+        <script>
+          createSliders();
+        </script>
+  		</main>
+	  </tr>
+	</table>
+</body>
+<script>
+//Event listeners for the three SMA sliders: Every slider will trigger this event
+document.addEventListener("DOMContentLoaded", function (event) {
+  var _selector = document.querySelectorAll('.checkbox-inline').forEach(_selector => {
+    _selector.addEventListener('change', function (event) {
+          callApiAndPlot(getCurrentMarketSymbol(), getCurrentTimeInterval(), numberOfDatasets);
+        });
+  });
+});
+
+function reloadIfResized(){
+  var height = $(window).height();
+  $(window).on('resize', function() {
+    if ($(this).height() !== height) {
+      height = $(this).height();
+      document.location.reload(true);
+    }
+  });
+}
+window.addEventListener('resize', reloadIfResized);
+</script>
+
+</html>
